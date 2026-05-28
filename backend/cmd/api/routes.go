@@ -7,7 +7,14 @@ import (
 
 func (app *application) routes() *gin.Engine {
 	router := gin.Default()
+
 	router.Use(cors.Default())
+
+	router.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "API running",
+		})
+	})
 
 	router.GET("/slots", app.GetSlots)
 	router.POST("/bookings", app.CreateBooking)
