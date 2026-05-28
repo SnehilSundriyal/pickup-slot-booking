@@ -42,7 +42,7 @@ func main() {
 	}
 
 	server := app.routes()
-	log.Printf("Starting API on port %s...", port)
+	log.Printf("Starting API on port %s...\n", port)
 	log.Println(`
   ______    ______       ______    ______   __
  /\  ___\  /\  __ \     /\  __ \  /\  == \ /\ \
@@ -52,7 +52,7 @@ func main() {
 
 `)
 
-	err = server.Run("0.0.0.0:" + port)
+	err = server.Run(":" + port)
 	if err != nil {
 		log.Fatal(err)
 	}
