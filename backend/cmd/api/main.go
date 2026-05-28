@@ -57,6 +57,10 @@ func main() {
 
 	log.Println("Starting Gin server...")
 	err = server.Run(":" + port)
+	err = server.Run(":" + port)
+
+	log.Printf("Gin server exited with error: %v\n", err)
+
 	if err != nil {
 		log.Fatal(err)
 	}
