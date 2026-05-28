@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/SnehilSundriyal/pickup-slot-booking/internal/driver"
 	"github.com/SnehilSundriyal/pickup-slot-booking/internal/repository"
@@ -9,8 +10,6 @@ import (
 	"github.com/SnehilSundriyal/pickup-slot-booking/internal/utils"
 	"github.com/gin-gonic/gin"
 )
-
-const port = ":8080"
 
 type application struct {
 	DB repository.DatabaseRepo
@@ -46,6 +45,15 @@ func main() {
    \/_____/  \/_____/     \/_/\/_/  \/_/     \/_/
 
 `)
+
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "8080"
+	}
+
+	err = server.Run(":" + port)
+
 	err = server.Run(port)
 	if err != nil {
 		log.Fatal(err)
