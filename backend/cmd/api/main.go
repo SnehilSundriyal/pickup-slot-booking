@@ -35,8 +35,14 @@ func main() {
 		DB: repo,
 	}
 
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "8080"
+	}
+
 	server := app.routes()
-	log.Println("Starting API on port 8080...")
+	log.Printf("Starting API on port %s...", port)
 	log.Println(`
   ______    ______       ______    ______   __
  /\  ___\  /\  __ \     /\  __ \  /\  == \ /\ \
@@ -46,14 +52,7 @@ func main() {
 
 `)
 
-	port := os.Getenv("PORT")
-
-	if port == "" {
-		port = "8080"
-	}
-
 	err = server.Run("0.0.0.0:" + port)
-	err = server.Run(port)
 	if err != nil {
 		log.Fatal(err)
 	}
