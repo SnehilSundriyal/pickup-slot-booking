@@ -52,8 +52,7 @@ func main() {
 		port = "8080"
 	}
 
-	err = server.Run(":" + port)
-
+	err = server.Run("0.0.0.0:" + port)
 	err = server.Run(port)
 	if err != nil {
 		log.Fatal(err)
