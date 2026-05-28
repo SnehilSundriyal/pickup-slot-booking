@@ -36,6 +36,7 @@ func main() {
 	}
 
 	port := os.Getenv("PORT")
+	log.Printf("PORT ENV VALUE = %q\n", port)
 
 	if port == "" {
 		port = "8080"
@@ -56,7 +57,6 @@ func main() {
 `)
 
 	log.Println("Starting Gin server...")
-	err = server.Run(":" + port)
 	err = server.Run(":" + port)
 
 	log.Printf("Gin server exited with error: %v\n", err)
