@@ -41,7 +41,10 @@ func main() {
 		port = "8080"
 	}
 
+	log.Println("Creating routes...")
 	server := app.routes()
+	log.Println("Routes created successfully")
+
 	log.Printf("Starting API on port %s...\n", port)
 	log.Println(`
   ______    ______       ______    ______   __
@@ -52,6 +55,7 @@ func main() {
 
 `)
 
+	log.Println("Starting Gin server...")
 	err = server.Run(":" + port)
 	if err != nil {
 		log.Fatal(err)
